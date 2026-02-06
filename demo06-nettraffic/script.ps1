@@ -142,3 +142,49 @@ az network public-ip show --resource-group "rg-az104-test-brazilsouth-01" `
     --name "pip-lb-az104-test-brazilsouth-01" --query "ipAddress" -o tsv
 
 
+##########################################
+#### Create Azure Application Gateway ####
+##########################################
+
+# Create Public IP for Application Gateway
+az network public-ip create --resource-group "rg-az104-test-brazilsouth-01" `
+    --name "pip-agw-az104-test-brazilsouth-01" --sku "Standard"
+
+# Create NSG rule to allow port range 65200-65535
+az network nsg rule create --resource-group "rg-az104-test-brazilsouth-01" `
+    --nsg-name "nsg-az104-test-brazilsouth-01" `
+    --name "AllowPortRange" `
+    --priority 101 `
+    --direction Inbound `
+    --access Allow `
+    --protocol Tcp `
+    --source-address-prefixes "*" `
+    --destination-address-prefixes "*" `
+    --source-port-ranges "*" `
+    --destination-port-ranges "65200-65535"
+
+# Create a new subnet for Application Gateway
+az network vnet subnet create --resource-group "rg-az104-test-brazilsouth-01" `
+    --vnet-name "vnet-az104-test-brazilsouth-01" `
+    --name "subnet-agw" `
+    --address-prefix "10.0.1.0/24" `
+    --network-security-group "nsg-az104-test-brazilsouth-01"
+
+az network application-gateway create `
+    --resource-group "rg-az104-test-brazilsouth-01" `
+    --name "agw-az104-test-brazilsouth-01" `
+    --capacity 2 `
+    --sku Standard_v2 `
+    --priority 1001 `
+    --http-settings-port 80 `
+    --http-settings-protocol Http `
+    --frontend-port 80 `
+    --vnet-name "vnet-az104-test-brazilsouth-01" `
+    --subnet "subnet-agw" `
+    --http-settings-cookie-based-affinity Disabled `
+    --public-ip-address "pip-agw-az104-test-brazilsouth-01" `
+    --servers "$vm1_private_ip" "$vm2_private_ip"
+
+# Get and display the Load Balancer Public IP
+az network public-ip show --resource-group "rg-az104-test-brazilsouth-01" `
+    --name "pip-agw-az104-test-brazilsouth-01" --query "ipAddress" -o tsv
