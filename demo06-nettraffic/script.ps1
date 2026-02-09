@@ -62,7 +62,7 @@ az vm create --resource-group "rg-az104-test-brazilsouth-01" `
     --nics "nic-vm-az104-test-brazilsouth-01" `
     --image "Ubuntu2404" `
     --size Standard_D2as_v6 `
-    --admin-username azureuser --admin-password "Password123!" `
+    --admin-username azureuser --admin-password $envFile.senha `
     --custom-data .\demo06-nettraffic\cloudinit.yml
 
 # Get Cloud Init LOG from a VM
@@ -84,7 +84,7 @@ az vm create --resource-group "rg-az104-test-brazilsouth-01" `
     --nics "nic-vm-az104-test-brazilsouth-02" `
     --image "Ubuntu2404" `
     --size Standard_D2as_v6 `
-    --admin-username azureuser --admin-password "Password123!" `
+    --admin-username azureuser --admin-password $envFile.senha `
     --custom-data .\demo06-nettraffic\cloudinit.yml
 
 

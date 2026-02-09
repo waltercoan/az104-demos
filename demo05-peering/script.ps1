@@ -1,3 +1,6 @@
+# Load environment variables from .env file
+$envFile = Get-Content ".env" | ConvertFrom-StringData
+
 # Create an Azure Resource Group
 az group create --name "rg-az104-test-brazilsouth-01" --location "brazilsouth"
 
@@ -42,7 +45,7 @@ az network nic create --resource-group "rg-az104-test-brazilsouth-01" `
 # Create a Linux VM
 az vm create --resource-group "rg-az104-test-brazilsouth-01" `
     --name "vm-az104-test-brazilsouth-01" --nics "nic-az104-test-brazilsouth-01" `
-    --image Ubuntu2404 --admin-username azureuser --admin-password "Password123!" `
+    --image Ubuntu2404 --admin-username azureuser --admin-password $envFile.senha `
     --size Standard_D2as_v6
 
 # Get the public IP of the first VM
@@ -66,7 +69,7 @@ az network nic create --resource-group "rg-az104-test-brazilsouth-01" `
 # Create a second Linux VM
 az vm create --resource-group "rg-az104-test-brazilsouth-01" `
     --name "vm-az104-test-brazilsouth-02" --nics "nic-az104-test-brazilsouth-02" `
-    --image Ubuntu2404 --admin-username azureuser --admin-password "Password123!" `
+    --image Ubuntu2404 --admin-username azureuser --admin-password $envFile.senha `
     --size Standard_D2as_v6
 
 # Get the public IP of the second VM

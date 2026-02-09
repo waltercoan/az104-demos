@@ -18,7 +18,6 @@ bld/
 .vs/
 
 # Visual Studio Code
-.vscode/
 *.code-workspace
 
 # User-specific files

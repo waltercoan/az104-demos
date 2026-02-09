@@ -36,7 +36,7 @@ az network nic create --resource-group "rg-az104-test-brazilsouth-01" `
 # Create a Linux VM
 az vm create --resource-group "rg-az104-test-brazilsouth-01" `
     --name "vm-az104-test-brazilsouth-01" --nics "nic-az104-test-brazilsouth-01" `
-    --image Ubuntu2404 --admin-username azureuser --admin-password "Password123!" `
+    --image Ubuntu2404 --admin-username azureuser --admin-password $envFile.senha `
     --size Standard_D2as_v6
 
 # Get the public IP of the first VM
@@ -95,7 +95,7 @@ az network vnet subnet update --resource-group "rg-az104-test-brazilsouth-01" `
 az vmss create --resource-group "rg-az104-test-brazilsouth-01" `
     --name "vmss-az104-test-brazilsouth-01" --image Ubuntu2404 `
     --instance-count 2 --admin-username azureuser `
-    --admin-password "Password123!" --vnet-name "vnet-az104-test-brazilsouth-01" `
+    --admin-password $envFile.senha --vnet-name "vnet-az104-test-brazilsouth-01" `
     --subnet "vmss-subnet" --nsg "nsg-vmss-az104-test-brazilsouth-01" `
     --backend-port 80 `
     --custom-data .\demo08-vm-vmss\cloudinit.yml `

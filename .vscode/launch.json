@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "demo01-newuser",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildaspnet",
+            "program": "${workspaceFolder}/demo01-newuser/authapp/bin/Debug/net10.0/authapp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/demo01-newuser/authapp",
+            "stopAtEntry": false,
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "serverReadyAction": {
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s",
+                "action": "openExternally"
+            }
+        },
+        {
+            "name": "demo09-webapp-continst-contapp",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildblazor",
+            "program": "${workspaceFolder}/demo09-webapp-continst-contapp/myapp/bin/Debug/net10.0/myapp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/demo09-webapp-continst-contapp/myapp",
+            "stopAtEntry": false,
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "serverReadyAction": {
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s",
+                "action": "openExternally"
+            }
+        }
+    ]
+}
