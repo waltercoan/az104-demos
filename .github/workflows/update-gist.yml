@@ -24,14 +24,17 @@ jobs:
 
             // Files to include in the gist
             const files = {
-              'demo01-newuser.MD': { content: fs.readFileSync('demo01-newuser/Readme.MD', 'utf8') },
-              'demo04-vnet.MD': { content: fs.readFileSync('demo04-vnet/Readme.MD', 'utf8') },
-              'demo05-peering.MD': { content: fs.readFileSync('demo05-peering/Readme.MD', 'utf8') },
-              'demo06-nettraffic.MD': { content: fs.readFileSync('demo06-nettraffic/Readme.MD', 'utf8') },
-              'demo07-storageaccount.MD': { content: fs.readFileSync('demo07-storageaccount/Readme.MD', 'utf8') },
-              'demo08-vm-vmss.MD': { content: fs.readFileSync('demo08-vm-vmss/Readme.MD', 'utf8') },
-              'demo09-webapp-continst-contapp.MD': { content: fs.readFileSync('demo09-webapp-continst-contapp/Readme.MD', 'utf8') },
-              'demo10-dataprotection.MD': { content: fs.readFileSync('demo10-dataprotection/Readme.MD', 'utf8') }
+              'demo01-newuser.MD': { content: fs.readFileSync('demo01-newuser/Readme.MD', 'utf8').replace("../imgs/", "") },
+              'demo04-vnet.MD': { content: fs.readFileSync('demo04-vnet/Readme.MD', 'utf8').replace("../imgs/", "") },
+              'demo05-peering.MD': { content: fs.readFileSync('demo05-peering/Readme.MD', 'utf8').replace("../imgs/", "") },
+              'demo06-nettraffic.MD': { content: fs.readFileSync('demo06-nettraffic/Readme.MD', 'utf8').replace("../imgs/", "") },
+              'demo07-storageaccount.MD': { content: fs.readFileSync('demo07-storageaccount/Readme.MD', 'utf8').replace("../imgs/", "") },
+              'demo08-vm-vmss.MD': { content: fs.readFileSync('demo08-vm-vmss/Readme.MD', 'utf8').replace("../imgs/", "") },
+              'demo09-webapp-continst-contapp.MD': { content: fs.readFileSync('demo09-webapp-continst-contapp/Readme.MD', 'utf8').replace("../imgs/", "") },
+              'demo10-dataprotection.MD': { content: fs.readFileSync('demo10-dataprotection/Readme.MD', 'utf8').replace("../imgs/", "") },
+              'diag-demo05.png': { content: fs.readFileSync('imgs/diag-demo05.png', 'utf8') },
+              'diag-demo06.png': { content: fs.readFileSync('imgs/diag-demo06.png', 'utf8') },
+              'diag-demo08.png': { content: fs.readFileSync('imgs/diag-demo08.png', 'utf8') }
             };
 
             await github.rest.gists.update({
