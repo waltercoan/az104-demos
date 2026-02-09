@@ -17,3 +17,7 @@ ClientSecret=...
 - [Demo 08 - VM e VMSS](./demo08-vm-vmss/Readme.MD)
 - [Demo 09 - Web App - Container Instance - Container App](./demo09-webapp-continst-contapp/Readme.MD)
 - [Demo 10 - Data Protection](./demo10-dataprotection/Readme.MD)
+
+## Public GIST
+
+- [Gist](https://gist.github.com/waltercoan/5836b3b5ba0999950544f5c52bb37076)
