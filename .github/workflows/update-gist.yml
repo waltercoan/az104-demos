@@ -24,7 +24,6 @@ jobs:
 
             // Files to include in the gist
             const files = {
-              'Readme.MD': { content: fs.readFileSync('Readme.MD', 'utf8') },
               'demo01-newuser.MD': { content: fs.readFileSync('demo01-newuser/Readme.MD', 'utf8') },
               'demo04-vnet.MD': { content: fs.readFileSync('demo04-vnet/Readme.MD', 'utf8') },
               'demo05-peering.MD': { content: fs.readFileSync('demo05-peering/Readme.MD', 'utf8') },

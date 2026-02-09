@@ -1,4 +1,4 @@
-# Demo 06 - Network Peering
+# Demo 05 - Network Peering
 
 ![Network Peering](../imgs/diag-demo05.png)
 
