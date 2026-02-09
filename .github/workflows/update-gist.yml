@@ -1,0 +1,51 @@
+name: Update Gist from Repo Files
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Readme.MD"
+      - "demo01-newuser/Readme.MD"
+      - "demo04-vnet/Readme.MD"
+      - "demo05-peering/Readme.MD"
+      - "demo06-nettraffic/Readme.MD"
+      - "demo07-storageaccount/Readme.MD"
+      - "demo08-vm-vmss/Readme.MD"
+      - "demo09-webapp-continst-contapp/Readme.MD"
+      - "demo10-dataprotection/Readme.MD"
+
+jobs:
+  update-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create/Update Gist
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GIST_TOKEN }}
+          script: |
+            const fs = require('fs');
+
+            // Gist ID (create one manually first, then paste the ID here)
+            const gistId = '5836b3b5ba0999950544f5c52bb37076';
+
+            // Files to include in the gist
+            const files = {
+              'Readme.MD': { content: fs.readFileSync('Readme.MD', 'utf8') },
+              'demo01-newuser/Readme.MD': { content: fs.readFileSync('demo01-newuser/Readme.MD', 'utf8') },
+              'demo04-vnet/Readme.MD': { content: fs.readFileSync('demo04-vnet/Readme.MD', 'utf8') },
+              'demo05-peering/Readme.MD': { content: fs.readFileSync('demo05-peering/Readme.MD', 'utf8') },
+              'demo06-nettraffic/Readme.MD': { content: fs.readFileSync('demo06-nettraffic/Readme.MD', 'utf8') },
+              'demo07-storageaccount/Readme.MD': { content: fs.readFileSync('demo07-storageaccount/Readme.MD', 'utf8') },
+              'demo08-vm-vmss/Readme.MD': { content: fs.readFileSync('demo08-vm-vmss/Readme.MD', 'utf8') },
+              'demo09-webapp-continst-contapp/Readme.MD': { content: fs.readFileSync('demo09-webapp-continst-contapp/Readme.MD', 'utf8') },
+              'demo10-dataprotection/Readme.MD': { content: fs.readFileSync('demo10-dataprotection/Readme.MD', 'utf8') }
+            };
+
+            await github.rest.gists.update({
+              gist_id: gistId,
+              files
+            });
