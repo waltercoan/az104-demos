@@ -9,7 +9,7 @@ az network vnet create --resource-group "rg-az104-test-brazilsouth-01" `
 # Create a Network Security Group
 az network nsg create --resource-group "rg-az104-test-brazilsouth-01" `
     --name "nsg-az104-test-brazilsouth-01"
-    
+
 # Associate the NSG with the subnet
 az network vnet subnet update --resource-group "rg-az104-test-brazilsouth-01" `
     --vnet-name "vnet-az104-test-brazilsouth-01" `
