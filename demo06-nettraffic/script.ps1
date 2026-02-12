@@ -1,3 +1,6 @@
+# Load environment variables from .env file
+$envFile = Get-Content ".env" | ConvertFrom-StringData
+
 # Create an Azure Resource Group
 az group create --name "rg-az104-test-brazilsouth-01" --location "brazilsouth"
 
@@ -66,11 +69,11 @@ az vm create --resource-group "rg-az104-test-brazilsouth-01" `
     --custom-data .\demo06-nettraffic\cloudinit.yml
 
 # Get Cloud Init LOG from a VM
-#az vm run-command invoke --resource-group "rg-az104-test-brazilsouth-01" `
-#    --name "vm-az104-test-brazilsouth-01" `
-#    --command-id RunShellScript `
-#    --scripts "cat /var/log/cloud-init.log" `
-#    --query "value[0].message" -o tsv
+az vm run-command invoke --resource-group "rg-az104-test-brazilsouth-01" `
+    --name "vm-az104-test-brazilsouth-01" `
+    --command-id RunShellScript `
+    --scripts "cat /var/log/cloud-init.log" `
+    --query "value[0].message" -o tsv
 
 # Create a second Network Interface without Public IP
 az network nic create --resource-group "rg-az104-test-brazilsouth-01" `
