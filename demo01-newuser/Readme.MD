@@ -15,11 +15,10 @@ Lê o arquivo `.env` e converte seu conteúdo em uma tabela hash, permitindo ace
 az ad user create `
     --display-name "Zezinho" `
     --user-principal-name "zezinho@MngEnvMCAP222468.onmicrosoft.com" `
-    --password $envFile.senha `
-    --department "fabricadesoftware"
+    --password $envFile.senha
 ```
 
-Cria um novo usuário no Azure AD com nome "Zezinho", define seu UPN, senha (carregada do `.env`) e departamento.
+Cria um novo usuário no Azure AD com nome "Zezinho", define seu UPN, senha (carregada do `.env`).
 
 ## Criar grupo "desenvolvedores"
 

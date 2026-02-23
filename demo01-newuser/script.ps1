@@ -3,10 +3,9 @@ $envFile = Get-Content ".env" | ConvertFrom-StringData
 
 # Create a new Azure AD user
 az ad user create `
-    --display-name "Zezinho" `
-    --user-principal-name "zezinho@MngEnvMCAP222468.onmicrosoft.com" `
-    --password $envFile.senha `
-    --department "fabricadesoftware"
+    --display-name "Huguinho" `
+    --user-principal-name "huguinho@MngEnvMCAP222468.onmicrosoft.com" `
+    --password $envFile.senha 
 
 az ad group create `
     --display-name "desenvolvedores" `
