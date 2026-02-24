@@ -13,11 +13,5 @@ az ad group create `
     
 az ad group member add `
     --group "desenvolvedores" `
-    --member-id "$(az ad user show --id "zezinho@MngEnvMCAP222468.onmicrosoft.com" --query id -o tsv)"
+    --member-id "$(az ad user show --id "huguinho@MngEnvMCAP222468.onmicrosoft.com" --query id -o tsv)"
 
-
-az ad group create `
-    --display-name "fabrica" `
-    --mail-nickname "fabrica" `
-    --dynamic-membership-rule "user.department -eq ""fabricadesoftware""" `
-    --enable-dynamic-membership

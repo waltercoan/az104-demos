@@ -55,6 +55,38 @@ az webapp up --resource-group "rg-az104-test-brazilsouth-01" `
 ```
 Acessa a pasta publicada e faz deploy da aplicação para a web app do Azure.
 
+
+### Criar um Slot chamado teste
+
+```powershell
+# Criar um novo deployment slot chamado "teste"
+az webapp deployment slot create --name "app-az104-test-brazilsouth-01" `
+    --resource-group "rg-az104-test-brazilsouth-01" `
+    --slot "teste"
+```
+
+### Empacotamento e deploy no slot
+```powershell
+cd ..
+
+# Remove previous publish output to avoid stale files causing BLAZOR106
+if (Test-Path .\publish) {
+    Remove-Item -Recurse -Force .\publish
+}
+
+dotnet publish -c Release -o ./publish
+cd .\publish\
+
+cd ..
+Compress-Archive -Path .\publish\* -DestinationPath .\app.zip -Force
+
+az webapp deployment source config-zip `
+    --name "app-az104-test-brazilsouth-01" `
+    --resource-group "rg-az104-test-brazilsouth-01" `
+    --slot "teste" `
+    --src app.zip
+```
+
 ## Docker file
 
 ```bash
