@@ -1,3 +1,6 @@
+# Load environment variables from .env file
+$envFile = Get-Content ".env" | ConvertFrom-StringData
+
 # Create an Azure Resource Group
 az group create --name "rg-az104-test-brazilsouth-01" --location "brazilsouth"
 

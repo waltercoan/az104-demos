@@ -5,6 +5,9 @@
 ## Criar um Grupo de Recursos do Azure
 
 ```powershell
+# Load environment variables from .env file
+$envFile = Get-Content ".env" | ConvertFrom-StringData
+
 az group create --name "rg-az104-test-brazilsouth-01" --location "brazilsouth"
 ```
 Cria um grupo de recursos chamado `rg-az104-test-brazilsouth-01` na região de Brasil (Sul) para organizar todos os recursos.
